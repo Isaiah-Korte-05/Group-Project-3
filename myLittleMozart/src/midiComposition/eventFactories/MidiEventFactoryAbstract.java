@@ -1,4 +1,4 @@
-package midiComposition.factory.eventFactories;
+package midiComposition.eventFactories;
 
 public interface MidiEventFactoryAbstract {
 	

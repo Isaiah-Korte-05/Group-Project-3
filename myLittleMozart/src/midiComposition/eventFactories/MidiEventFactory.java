@@ -1,4 +1,4 @@
-package midiComposition.factory.eventFactories;
+package midiComposition.eventFactories;
 
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiEvent;
