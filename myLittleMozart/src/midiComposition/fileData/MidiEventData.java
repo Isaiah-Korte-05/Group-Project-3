@@ -1,4 +1,4 @@
-package midiComposition.fileParser;
+package midiComposition.fileData;
 
 public class MidiEventData {
 	
