@@ -18,5 +18,4 @@ public class ElectricBassGuitarStrategy implements InstrumentStrategy {
 			e.printStackTrace();
 		}
 	}
-
 }
