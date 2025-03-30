@@ -2,20 +2,37 @@ package midiComposition.fileData;
 
 public class MidiEventData {
 	
+	private int startEndTick;
+	private int noteOnOff;
 	private int channel;
 	private int note;
-	private int startTick;
-	private int endTick;
 	private int velocity;
 	private int instrument;
 	
-	public MidiEventData(int channel, int note, int startTick, int endTick, int velocity, int instrument) {
+	public MidiEventData(int startEndTick, int noteOnOff, int channel, 
+							int note, int velocity, int instrument) {
+		this.startEndTick = startEndTick;
+		this.noteOnOff = noteOnOff;
 		this.channel = channel;
 		this.note = note;
-		this.startTick = startTick;
-		this.endTick = endTick;
 		this.velocity = velocity;
 		this.instrument = instrument;
+	}
+
+	public int getStartEndTick() {
+		return startEndTick;
+	}
+
+	public void setStartEndTick(int startEndTick) {
+		this.startEndTick = startEndTick;
+	}
+
+	public int getNoteOnOff() {
+		return noteOnOff;
+	}
+
+	public void setNoteOnOff(int noteOnOff) {
+		this.noteOnOff = noteOnOff;
 	}
 
 	public int getChannel() {
@@ -32,22 +49,6 @@ public class MidiEventData {
 
 	public void setNote(int note) {
 		this.note = note;
-	}
-
-	public int getStartTick() {
-		return startTick;
-	}
-
-	public void setStartTick(int startTick) {
-		this.startTick = startTick;
-	}
-
-	public int getEndTick() {
-		return endTick;
-	}
-
-	public void setEndTick(int endTick) {
-		this.endTick = endTick;
 	}
 
 	public int getVelocity() {

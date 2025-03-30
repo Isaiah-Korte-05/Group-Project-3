@@ -7,10 +7,10 @@ public class MidiCsvParser {
 
 	public static List<MidiEventData> parseCsv(String fileName) {
 		
+		int startEndTick;
+		int noteOnOff;
 		int channel;
 		int note;
-		int startTick;
-		int endTick;
 		int velocity;
 		int instrument;
 		
@@ -25,14 +25,14 @@ public class MidiCsvParser {
             	
                 String[] data = line.split(csvDelimiter);
                 
-                channel = Integer.parseInt(data[0]);
-                note = Integer.parseInt(data[1]);
-                startTick = Integer.parseInt(data[2]);
-                endTick = Integer.parseInt(data[3]);
+                startEndTick = Integer.parseInt(data[0]);
+                noteOnOff = Integer.parseInt(data[1]);
+                channel = Integer.parseInt(data[2]);
+                note = Integer.parseInt(data[3]);
                 velocity = Integer.parseInt(data[4]);
                 instrument = Integer.parseInt(data[5]);
                 
-            	list.add(new MidiEventData(channel, note, startTick, endTick, velocity, instrument));
+            	list.add(new MidiEventData(startEndTick, noteOnOff, channel, note, velocity, instrument));
             }
 
         } catch (IOException e) {
