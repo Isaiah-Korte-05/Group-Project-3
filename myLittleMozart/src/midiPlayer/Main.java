@@ -6,7 +6,7 @@ import javax.sound.midi.*;
 
 import midiComposition.fileData.*;
 import midiComposition.eventFactories.*;
-import midiComposition.eventFactories.factoryTypes.*;
+import midiComposition.eventFactories.abstractFactories.*;
 import midiComposition.strategy.instrument.*;
 import midiComposition.strategy.pitch.*;
 
@@ -28,22 +28,22 @@ public class Main {
 			
 			switch(eventSelector) {
 			case 0:
-				factoryAbstract = new StandardMidiEventFactory();
+				factoryAbstract = new StandardMidiEventFactoryAbstract();
 				factory = factoryAbstract.createFactory();
 				break;
 			case 1:
-				factoryAbstract = new LegatoMidiEventFactory();
+				factoryAbstract = new LegatoMidiEventFactoryAbstract();
 				factory = factoryAbstract.createFactory();
 				break;
 			case 2:
-				factoryAbstract = new StaccatoMidiEventFactory();
+				factoryAbstract = new StaccatoMidiEventFactoryAbstract();
 				factory = factoryAbstract.createFactory();
 				break;
 			}
 			
 			InstrumentStrategy instrumentStrategy = null;
 			
-			switch(eventSelector) {
+			switch(instrumentSelector) {
 			case 0:
 				instrumentStrategy = new AcousticGrandPianoStrategy();
 				instrumentStrategy.applyInstrument(track, 0);
@@ -60,7 +60,7 @@ public class Main {
 			
 			PitchStrategy pitchStrategy = null;
 			
-			switch(eventSelector) {
+			switch(pitchSelector) {
 			case 0:
 				pitchStrategy = new LowerPitchStrategy();
 				break;
