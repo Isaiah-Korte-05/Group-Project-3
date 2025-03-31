@@ -7,6 +7,12 @@ import javax.sound.midi.Track;
 
 public class AcousticGrandPianoStrategy implements InstrumentStrategy {
 
+	/**
+	 * This applies a MIDI instrument change to an acoustic grand piano to the
+	 * given track and on the specified channel.
+	 * @throws InvalidMidiDataException if there is an error creating the MIDI short
+	 * 		   message or if any of the provided parameters are invalid
+	 */
 	@Override
 	public void applyInstrument(Track track, int channel) {
 		try {
