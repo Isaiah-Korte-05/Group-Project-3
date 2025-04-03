@@ -17,7 +17,7 @@ public class AcousticGrandPianoStrategy implements InstrumentStrategy {
 	public void applyInstrument(Track track, int channel) {
 		try {
 			ShortMessage message = new ShortMessage();
-			message.setMessage(ShortMessage.PROGRAM_CHANGE, 0, channel);
+			message.setMessage(ShortMessage.PROGRAM_CHANGE, channel, 0, 0);
 			MidiEvent event = new MidiEvent(message, 0);
 			track.add(event);
 		} catch (InvalidMidiDataException e) {
