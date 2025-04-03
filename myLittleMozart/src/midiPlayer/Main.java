@@ -30,7 +30,7 @@ public class Main {
 					System.out.println("Please select which Note Length Behavior you wish to apply:");
 					System.out.println("[0] Standard Length");
 					System.out.println("[1] Legato");
-					System.out.println("[2] Staccato");
+					System.out.println("[2] Staccato\n");
 					int eventSelector = scanner.nextInt();
 					
 					switch(eventSelector) {
@@ -59,10 +59,10 @@ public class Main {
 				doBreak = false;
 				
 				while(!doBreak) {
-					System.out.println("Please select which instrument you wish to apply:");
+					System.out.println("\nPlease select which instrument you wish to apply:");
 					System.out.println("[0] Acoustic Grand Piano");
 					System.out.println("[1] Electric Bass Guitar");
-					System.out.println("[2] Trumpet");
+					System.out.println("[2] Trumpet\n");
 					int instrumentSelector = scanner.nextInt();
 					
 					switch(instrumentSelector) {
@@ -90,9 +90,9 @@ public class Main {
 				doBreak = false;
 				
 				while(!doBreak) {
-					System.out.println("Please select which pitch adjustment you wish to apply:");
+					System.out.println("\nPlease select which pitch adjustment you wish to apply:");
 					System.out.println("[0] Lower");
-					System.out.println("[1] Higher");
+					System.out.println("[1] Higher\n");
 					int pitchSelector = scanner.nextInt();
 					
 					switch(pitchSelector) {
@@ -112,7 +112,7 @@ public class Main {
 				for(MidiEventData event : midiEvents) {
 					int modifiedNote = pitchStrategy.modifyPitch(event.getNote());
 					
-					if(event.getNoteOnOff() == ShortMessage.NOTE_ON) {
+					if(event.getNoteOnOff() == (int)ShortMessage.NOTE_ON) {
 						track.add(factory.createNoteOn(event.getStartEndTick(), modifiedNote, event.getVelocity(), event.getChannel()));
 					}
 					else {
@@ -131,6 +131,7 @@ public class Main {
 			}
 			Thread.sleep(500);
 			sequencer.close();
+						
 		}
 		catch(Exception e) {
 			e.printStackTrace();
