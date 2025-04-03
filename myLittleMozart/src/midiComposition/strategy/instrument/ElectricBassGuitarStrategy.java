@@ -17,7 +17,7 @@ public class ElectricBassGuitarStrategy implements InstrumentStrategy {
 	public void applyInstrument(Track track, int channel) {
 		try {
 			ShortMessage message = new ShortMessage();
-			message.setMessage(ShortMessage.PROGRAM_CHANGE, channel, 33);
+			message.setMessage(ShortMessage.PROGRAM_CHANGE, 33, channel);
 			MidiEvent event = new MidiEvent(message, 0);
 			track.add(event);
 		} catch (InvalidMidiDataException e) {

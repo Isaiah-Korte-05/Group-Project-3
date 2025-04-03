@@ -17,7 +17,7 @@ public class TrumpetStrategy implements InstrumentStrategy {
 	public void applyInstrument(Track track, int channel) {
 		try {
 			ShortMessage message = new ShortMessage();
-			message.setMessage(ShortMessage.PROGRAM_CHANGE, channel, 56);
+			message.setMessage(ShortMessage.PROGRAM_CHANGE, 56, channel);
 			MidiEvent event = new MidiEvent(message, 0);
 			track.add(event);
 		} catch (InvalidMidiDataException e) {
