@@ -26,7 +26,15 @@ public class MidiCsvParser {
                 String[] data = line.split(csvDelimiter);
                 
                 startEndTick = Integer.parseInt(data[0]);
-                noteOnOff = Integer.parseInt(data[1]);
+                
+                String noteState = data[1];
+                if(noteState.equals(" Note_on_c")) {
+                	noteOnOff = 144;
+                }
+                else {
+                	noteOnOff = 128;
+                }
+                
                 channel = Integer.parseInt(data[2]);
                 note = Integer.parseInt(data[3]);
                 velocity = Integer.parseInt(data[4]);
@@ -39,8 +47,7 @@ public class MidiCsvParser {
             e.printStackTrace();
         }
 		
-		
-		return null;
+		return list;
 	}
 
 }
