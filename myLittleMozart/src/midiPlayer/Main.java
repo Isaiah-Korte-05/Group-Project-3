@@ -16,7 +16,10 @@ public class Main {
 	public static void main(String[] args) {
 
 		try {
-			List<MidiEventData> midiEvents = MidiCsvParser.parseCsv("C:\\Users\\isaia\\git\\Group-Project-3\\myLittleMozart\\src\\midiPlayer\\files\\mystery_song.csv");
+			
+			String filename = System.getProperty("user.dir") + "\\src\\midiPlayer\\files\\mystery_song.csv";
+			
+			List<MidiEventData> midiEvents = MidiCsvParser.parseCsv(filename);
 			Sequence sequence = new Sequence(Sequence.PPQ, 384);
 			Track track = sequence.createTrack();
 			
@@ -69,16 +72,28 @@ public class Main {
 					case 0:
 						instrumentStrategy = new AcousticGrandPianoStrategy();
 						instrumentStrategy.applyInstrument(track, 0);
+						instrumentStrategy.applyInstrument(track, 1);
+						instrumentStrategy.applyInstrument(track, 2);
+						instrumentStrategy.applyInstrument(track, 3);
+						instrumentStrategy.applyInstrument(track, 4);
 						doBreak = true;
 						break;
 					case 1:
 						instrumentStrategy = new ElectricBassGuitarStrategy();
 						instrumentStrategy.applyInstrument(track, 0);
+						instrumentStrategy.applyInstrument(track, 1);
+						instrumentStrategy.applyInstrument(track, 2);
+						instrumentStrategy.applyInstrument(track, 3);
+						instrumentStrategy.applyInstrument(track, 4);
 						doBreak = true;
 						break;
 					case 2:
 						instrumentStrategy = new TrumpetStrategy();
 						instrumentStrategy.applyInstrument(track, 0);
+						instrumentStrategy.applyInstrument(track, 1);
+						instrumentStrategy.applyInstrument(track, 2);
+						instrumentStrategy.applyInstrument(track, 3);
+						instrumentStrategy.applyInstrument(track, 4);
 						doBreak = true;
 						break;
 					default:
@@ -110,9 +125,10 @@ public class Main {
 				}
 				
 				for(MidiEventData event : midiEvents) {
-					int modifiedNote = pitchStrategy.modifyPitch(event.getNote());
+					int modifiedNote = pitchStrategy.modifyPitch(event.getNote());;
+					for(int i = 0; i < 4; i++) {modifiedNote = pitchStrategy.modifyPitch(modifiedNote);}
 					
-					if(event.getNoteOnOff() == (int)ShortMessage.NOTE_ON) {
+					if(event.getNoteOnOff() == ShortMessage.NOTE_ON) {
 						track.add(factory.createNoteOn(event.getStartEndTick(), modifiedNote, event.getVelocity(), event.getChannel()));
 					}
 					else {
