@@ -17,7 +17,7 @@ public class StaccatoMidiEventFactory implements MidiEventFactory {
 		try {
 			ShortMessage message = new ShortMessage();
 			message.setMessage(ShortMessage.NOTE_ON, channel, note, velocity);
-			return new MidiEvent(message, tick - 120);
+			return new MidiEvent(message, tick);
 		} catch (InvalidMidiDataException e) {
 			throw new InvalidMidiDataException("Error creating NoteOn event: " + e.getMessage());
 		}
@@ -31,7 +31,7 @@ public class StaccatoMidiEventFactory implements MidiEventFactory {
 	public MidiEvent createNoteOff(int tick, int note, int channel) throws InvalidMidiDataException {
 		try {
 			ShortMessage message = new ShortMessage();
-			message.setMessage(ShortMessage.NOTE_OFF, channel, note);
+			message.setMessage(ShortMessage.NOTE_OFF, channel, note, 0);
 			return new MidiEvent(message, tick - 120);
 		} catch (InvalidMidiDataException e) {
 			throw new InvalidMidiDataException("Error creating NoteOff event: " + e.getMessage());
