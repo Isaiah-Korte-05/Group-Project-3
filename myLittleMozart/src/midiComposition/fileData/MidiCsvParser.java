@@ -42,11 +42,11 @@ public class MidiCsvParser {
                 
                 String noteState = data[1];
                 if(noteState.equals(" Note_on_c")) {
-			// Integer equivalent of NOTE_ON
+                	// Integer equivalent of NOTE_ON
                 	noteOnOff = 144;
                 }
                 else {
-			// Integer equivalent of NOTE_OFF
+                	// Integer equivalent of NOTE_OFF
                 	noteOnOff = 128;
                 }
                 
