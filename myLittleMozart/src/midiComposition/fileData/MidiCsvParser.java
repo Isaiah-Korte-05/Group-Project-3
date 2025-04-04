@@ -42,9 +42,11 @@ public class MidiCsvParser {
                 
                 String noteState = data[1];
                 if(noteState.equals(" Note_on_c")) {
+			// Integer equivalent of NOTE_ON
                 	noteOnOff = 144;
                 }
                 else {
+			// Integer equivalent of NOTE_OFF
                 	noteOnOff = 128;
                 }
                 
@@ -57,7 +59,9 @@ public class MidiCsvParser {
             	list.add(new MidiEventData(startEndTick, noteOnOff, channel, note, velocity, instrument));
             }
 
-        } catch (IOException e) {
+        } 
+	// If error reading CSV file
+	catch (IOException e) {
             e.printStackTrace();
         }
 		
